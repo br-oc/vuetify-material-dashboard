@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     id="core-navigation-drawer"
-    v-model="drawer"
+    v-model="drawerState"
     :dark="barColor !== 'rgba(228, 226, 226, 1), rgba(255, 255, 255, 0.7)'"
     :expand-on-hover="expandOnHover"
     :right="$vuetify.rtl"
@@ -38,7 +38,7 @@
 
         <v-list-item-content>
           <v-list-item-title
-            class="display-1"
+            class="text-h4"
             v-text="profile.title"
           />
         </v-list-item-content>
@@ -77,13 +77,16 @@
     </v-list>
 
     <template v-slot:append>
-      <base-item
-        :item="{
-          title: $t('upgrade'),
-          icon: 'mdi-package-up',
-          to: '/upgrade',
-        }"
-      />
+      <div
+        @click="exit"
+      >
+        <base-item
+          :item="{
+            title: $t('logOut'),
+            icon: 'mdi-package-up',
+          }"
+        />
+      </div>
     </template>
   </v-navigation-drawer>
 </template>
@@ -91,6 +94,7 @@
 <script>
   // Utilities
   import {
+    mapActions,
     mapState,
   } from 'vuex'
 
@@ -145,8 +149,8 @@
     }),
 
     computed: {
-      ...mapState(['barColor', 'barImage']),
-      drawer: {
+      ...mapState(['barColor', 'barImage', 'drawer']),
+      drawerState: {
         get () {
           return this.$store.state.drawer
         },
@@ -164,14 +168,18 @@
         }
       },
     },
-
     methods: {
+      ...mapActions(['LogOut']),
       mapItem (item) {
         return {
           ...item,
           children: item.children ? item.children.map(this.mapItem) : undefined,
           title: this.$t(item.title),
         }
+      },
+      exit () {
+        this.LogOut()
+        this.$router.go('/login')
       },
     },
   }

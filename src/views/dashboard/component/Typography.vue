@@ -18,11 +18,11 @@
           color="green"
         >
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">
+            <div class="text-h3 font-weight-light">
               Material Dashboard Heading
             </div>
 
-            <div class="subtitle-1 font-weight-light">
+            <div class="text-subtitle-1 font-weight-light">
               Created using Roboto Font Family
             </div>
           </template>
@@ -87,9 +87,9 @@
       typography: {
         'display-4': ['Display 4', material, 'h1'],
         'display-3': ['Display 3', material, 'h2'],
-        'display-2': ['Display 2', material, 'h3'],
-        'display-1': ['Display 1', material, 'h4'],
-        headline: ['Headline', material, 'h5'],
+        'text-h3': ['Display 2', material, 'h3'],
+        'text-h4': ['Display 1', material, 'h4'],
+        'text-h5': ['Headline', material, 'h5'],
         'title text-uppercase': ['Title', material, 'h6'],
         '': ['Paragraph', leader, 'p'],
         blockquote: ['Quote', leader, 'blockquote'],

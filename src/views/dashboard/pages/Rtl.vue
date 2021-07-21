@@ -167,12 +167,12 @@
               </v-chip>
 
               <p
-                class="subtitle-1"
+                class="text-subtitle-1"
                 v-text="timeline.text"
               />
 
               <div
-                class="text-uppercase body-2"
+                class="text-uppercase text-body-2"
                 v-text="timeline.subtext"
               />
 
